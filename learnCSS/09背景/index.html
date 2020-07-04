@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>背景颜色-图片</title>
+    <style>
+        div{
+            width: 1000px;
+            height: 600px;
+            /*边框：粗细 线型 颜色*/
+            border: 1px solid red;
+            background-image: url("../aa.png");  /*默认平铺*/
+        }
+        #d1{
+            background-repeat: repeat-x;  /*仅按水平方向平铺*/
+        }
+        #d2{
+            background-repeat: repeat-y;  /*仅按垂直方向平铺*/
+        }
+        #d3{
+            background-repeat: no-repeat;  /*不平铺*/
+        }
+    </style>
+</head>
+<body>
+    <div id="d1"></div>
+    <div id="d2"></div>
+    <div id="d3"></div>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数组</title>
+
+    <script>
+
+        var arr = [1,2,3,false,[33,22,11,true],"qiqi"];
+
+        arr.length;  // 数组元素个数
+
+        arr.indexof(3);  // 获得元素下标索引
+
+        arr.slice(1,5);  // 获得index为1-4的元素
+
+        arr.push("aa", "bb", "dd");  // 从最后添加元素
+        arr.pop();  // 从最后弹出一个元素
+        arr.unshift("123", '321');  // 从头部添加元素
+        arr.shift();  // 从头部弹出一个元素
+
+        arr.sort();  // 排序
+        arr.reverse();  // 元素反序
+
+        arr.concat([111,444,888]);  // 两个数组拼接（产生新的数组，非原地修改）
+
+        arr.join("-");  // 以“-”为连接符生成字符串
+        // arr = [1,2,3,4,5,6,7];
+        // arr.join("-");  // ==> "1-2-3-4-5-6-7"
+
+        var arr = [[1,2], [true,4.56], ["a",false]];
+        arr[1][1];  // 4.56
+
+
+    </script>
+
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>盒子模型</title>
+<!--margin border padding
+    外边距  边框  内边距-->
+    <style>
+        body,h1,h2,h3,ul,li,a,input{
+            /*首先初始化，把一些默认有自带边距的东西边距设置为0*/
+            border: 0;
+            margin: 0;
+            text-decoration: none;
+        }
+        /*border：粗细 样式 颜色*/
+        #box{
+            width: 300px;
+            border: 1px solid red;
+            text-align: center;
+            margin: 30px auto;  /*margin可以用来做居中对齐*/
+            padding: 5px 0;
+        }
+        div form{
+            padding: 5px;
+            /*height: 200px;*/
+            /*background: #868c8d;*/
+        }
+
+        form div{
+            height: 30px;
+            line-height: 30px;
+            border: 1px solid black;
+            margin: 5px;
+            vertical-align: middle;
+
+        }
+
+        span,input{
+            vertical-align: middle;
+            text-align: center;
+            height: 20px;
+            line-height: 20px;
+        }
+
+    </style>
+</head>
+<body>
+<div id="box">
+    <span>扫码登录</span>&nbsp;&nbsp;&nbsp;<span>账户登录</span>
+<!--    <hr/>-->
+    <form action="#" method="get">
+        <div>
+            <span>用户名：</span>
+            <input type="search" name="username">
+        </div>
+        <div>
+            <span>密&nbsp;&nbsp;&nbsp;&nbsp;码：</span>
+            <input type="password" name="password">
+        </div>
+        <div>
+            <span>邮&nbsp;&nbsp;&nbsp;&nbsp;箱：</span>
+            <input type="mail" name="mail">
+        </div>
+    </form>
+</div>
+
+</body>
+</html>

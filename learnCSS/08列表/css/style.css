@@ -1,0 +1,43 @@
+#nav{
+    width: 250px;
+    align-content: center;
+
+}
+
+.title{
+    font-size: 30px;
+    text-indent: 1em;
+    font-weight: bold;
+    line-height: 40px;
+    color: #ffffff;
+    /*直接连写了：颜色 背景图片 x y style*/
+    background: #ff5000 url("../arrow.png") 230px 10px no-repeat;
+
+}
+
+ul{
+    border: 2px solid #ff5000;
+}
+
+/*ul li{
+    list-style: none  去掉原点/数字
+                circle  使用空心圆
+                decimal  使用数字
+                square  使用正方形
+}*/
+ul li{
+    list-style: none;
+    text-indent: 1em;
+    height: 35px;
+    /*直接连写了：颜色 背景图片 x y style*/
+    background: #ffffff url("../arrow.png") 180px 0 no-repeat;
+}
+
+a{
+    color: black;
+    text-decoration: none;
+}
+a:hover{
+    color: #ff5000;
+    text-decoration: underline;
+}

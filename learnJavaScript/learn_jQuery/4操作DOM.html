@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>操作DOM</title>
+    <script src="lib/jquery-3.5.1.js"></script>
+</head>
+<body>
+<ul id="lang">
+    <li id="py" name="python">python</li>
+    <li id="java" class="j">java</li>
+    <li id="js" class="j">javascript</li>
+</ul>
+
+<script>
+    $("#js").text("html");
+    $("#js").html("<strong>text</strong>");
+
+    $("#lang li").css("color", "red");
+    $("#lang li[class=j]").css("color", "blue");
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录注册</title>
+</head>
+<body>
+
+<h1>注册</h1>
+
+<!--表单
+action: 表单提交的位置，可以是网站，也可以是另一个请求处理地址
+method: post, get两种方式
+    get方式提交可以在url中显式地看到提交的参数，不安全，高效
+    post方式提交不能在url中看到提交的参数，可以传输大文件
+-->
+<!--通用规律
+1.表单中的各种部件，都要加上一个name，这样才能在后台有针对的做出处理
+2.value用来设置表单的（默认）值
+3.readonly设置后，client无法修改，只读
+4.disabled设置后，此组件对client不可用
+5.hidden设置后，此组件对client隐藏，不会被提交
+-->
+<form action="01firstHTML.html" method="get">
+<!--<form action="01firstHTML.html" method="post">-->
+    <!--文本输入框：
+    <input type="text">
+        size  文本框的长度（默认是20）
+        value  默认值
+        maxlength  最大输入长度
+    -->
+    <p><!--readonly设置后，client无法修改，只读-->
+        名字：<input type="text" name="username" value="qizidog" maxlength="10" size="30" readonly>
+    </p>
+
+    <!--密码框：<input type="password">-->
+    <p>密码：<!--disabled设置后，此组件对client不可用，不会被提交-->
+        <input type="password" name="passwd"  value="123456" disabled hidden>  <!--起名字，养成好习惯-->
+    </p>
+
+    <!--单选框 <input type="radio" value="????">-->
+    <p>性别：
+        <input type="radio" value="boy" name="sex" checked/> 男 &nbsp;&nbsp;  <!--checked默认选中-->
+        <input type="radio" value="girl" name="sex"/> 女  <!--两个name如果是相同的，则选项之间是互斥关系，不可兼得-->
+    </p>
+
+    <!--复选框 <input="checkbox" value="???">-->
+    <p>爱好：
+        <input type="checkbox" value="study" name="hobby" checked> 学习  <!--checked默认选中-->
+        <input type="checkbox" value="sleep" name="hobby"> 睡觉
+        <input type="checkbox" value="sport" name="hobby"> 运动
+    </p>
+
+    <!--按钮-->
+    <p>
+        <input type="button" value="我是一个按钮" name="btn1"><br/>
+        <input type="image" src="../resources/image/pic1.png" width="50px" height="50px">  <!--跟submit有相同的效果，点击就提交了-->
+    </p>
+
+    <!--文件域-->
+    <p>
+        <input type="file" name="file_field">
+        <input type="button" value="上传" name="upload">
+    </p>
+
+    <!--邮件验证-->
+    <p>邮箱验证:
+        <input type="email" name="myemail" placeholder="123456@gmai.com">
+    </p>
+    <!--URL验证-->
+    <p>URL验证:
+        <input type="url" name="my_url" placeholder="https://www.baidu.com">
+    </p>
+    <!--数字验证-->
+    <p>数字验证：
+        <input type="number" name="my_number" max="100" min="0" step="3">
+    </p>
+
+    <!--滑动条-->
+    <p>滑动条：
+        <input type="range" name="voice" min="0" max="100" step="2" value="0">
+    </p>
+
+    <!--搜索框-->
+    <p>百度一下：
+        <input type="search" name="search">
+    </p>
+
+    <!--下拉框-->
+    <p>
+        <select name="列表名称" id="">  <!--标识是多个列表中的哪一个列表，提交信息后在后台会用到，一般不会用中文-->
+            <option value="china">中国</option>  <!--value是提交后的值，中间的中文是显示给用户看的-->
+            <option value="us" selected>美国</option>  <!--selected是默认选中的意思-->
+            <option value="eth">瑞士</option>
+            <option value="India">印度</option>
+        </select>
+    </p>
+
+    <!--文本域
+       cols="30" rows="10"    列和行
+    -->
+    <p>文本域：<br>  <!--required必须填写，非空判断-->
+        <textarea name="textarea" id="" cols="30" rows="10" placeholder="你想对我说的话" required>文本内容</textarea>
+    </p>
+
+    <!--增强鼠标可用性-->
+    <p>
+        <label for="mark">点我试试</label>  <!--和id关联，指向一个和for对应的id-->
+        <input type="text" name="text2" id="mark" placeholder="你输入完我就消失了"><!--提示信息-->
+    </p>
+
+    <p>自定义邮箱检查：
+        <input type="text" name="diy_mail" pattern="^[\w-]+(\.[\w-]+)*@[\w-]+(\.[\w-]+)+$">
+
+    </p>
+
+    <input type="submit" value="点击提交">  <!--value是按钮上的字，如果不显式指定value则默认为提交-->
+    <input type="reset" value="点击重置">  <!--value是按钮上的字，如果不显式指定value则默认为重置-->
+</form>
+
+
+</body>
+</html>

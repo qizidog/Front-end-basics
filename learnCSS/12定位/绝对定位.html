@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>绝对定位</title>
+    <!--absolute：会浮起来
+        没有父级元素的情况下，相对于浏览器定位
+        有父级元素的情况下，相对于父级元素定位
+    -->
+    <style>
+        div{
+            margin: 10px;
+            padding: 5px;
+            font-size: 12px;
+            line-height: 25px;
+        }
+
+        #father{
+            border: 1px solid #666;
+            position: relative;  /*加上父级标签的位置后，相对父级标签定位*/
+        }
+
+        #first{
+            border: 1px dashed #e53232;
+            background: #fff9ae;
+            position: absolute;/*绝对定位：上下左右*/
+            top: 60px; /*从上（往下）*//*top起作用时bottom无效*/
+            left: 20px;  /*从左（往右）*/
+        }
+
+        #second{
+            border: 1px dashed #58b8ec;
+            background: #c4ffae;
+            /*position: relative;*/
+            /*left: -10px;  !*left起作用时right无效*!*/
+            /*right: 20px;*/
+        }
+
+        #third{
+            border: 1px dashed #8ab49c;
+            background: #f1bef6;
+        }
+    </style>
+</head>
+<body>
+<div id="father">
+    <div id="first">第1个盒子</div>
+    <div id="second">第2个盒子</div>
+    <div id="third">第3个盒子</div>
+</div>
+</body>
+</html>

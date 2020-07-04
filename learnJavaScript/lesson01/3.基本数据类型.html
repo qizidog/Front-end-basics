@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>基本数据类型</title>
+    <script>
+        123;  // java中的整数
+        123.1;  // java中的浮点数
+        1.234e3;  // 科学计数法
+        -123;  // 负数
+        NaN;  // not a number
+        Infinity;  // 无穷大（1/0）
+
+        'abd';
+        "abc";
+
+        true; false;
+
+        /*
+        =  赋值
+        == 等于（类型不同，值相同时，为true）
+        === 绝对等于（类型和值都相同时，为true）*/
+
+        // 两种数组创建方式
+        var arr = [1,2,3,4,"hello",true];
+        var arr2 = new Array(1,2,3,4,"world",false);
+        arr[4];  // 获得arr数组的第5个元素“hello”
+        arr[10];  // 数组取值越界时返回undefine;
+
+        // 对象 Person p = new Person("qiqi", 3, ["js", "java", "web"]);
+        var person={
+            name:"qiqi",
+            age:3,
+            tags:["js", "java", "web"]
+        };
+        console.log(person.name);  // 取name属性值
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Z-index及透明度</title>
+    <style>
+        div,ul,li{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        #father{
+            width: 200px;
+            overflow: hidden;
+            border: 1px solid red;
+            position: relative;
+        }
+        #dsb,#bg{
+            position: absolute;
+            top: 175px;
+            font-size: 12px;
+            width: 200px;
+            height: 25px;
+            line-height: 25px;
+        }
+        #dsb{
+            z-index: 999;  /*图层，最小为0，最大无限制*/
+        }
+        #bg{
+            background: #666666;
+            opacity: 0.7;  /*透明度*/
+        }
+    </style>
+</head>
+<body>
+    <div id="father">
+        <ul>
+            <li><img src="../pic.png" alt="图片加载失败" width="200px" height="200px"></li>
+            <li id="dsb">wechat:qizidog</li>
+            <li id="bg"></li>
+            <li>我的微信</li>
+        </ul>
+
+    </div>
+</body>
+</html>

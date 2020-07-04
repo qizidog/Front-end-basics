@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>弹球游戏</title>
+
+    <style>
+        #wrap{
+            width: 90%;
+            height: 300px;
+            position: relative;
+            top: 100px;
+            margin:auto;
+        }
+        #wrap div{
+            width: 45px; height: 15px;
+            border: 1px solid #ff645b;
+            position: absolute;
+            background: rgb(255, 99, 89);
+            box-shadow: 0 0 9px 1px rgb(255, 187, 136) inset;
+            top: 0; left: 0;
+            transform-origin: top center
+        }
+        #ward{
+            width: 120px;
+            height: 30px;
+            background: darksalmon;
+            border-radius: 10px;
+            position: absolute;
+            left: 0;
+        }
+        #ball{
+            width: 15px;
+            height: 15px;
+            background: cornflowerblue;
+            border-radius: 50%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            box-shadow: 0 0 3px #7be9ff;
+        }
+        #score{
+            position: absolute;
+            right: 30px;
+            top: 20px;
+            font-size: 40px;
+            color: #ff645b;
+            font-weight: bold;
+        }
+        #gameover {
+            position: absolute;
+            left: 0; right: 0; top: 0; bottom: 0;  /*居中对齐*/
+            margin: auto;
+            width: 300px; height: 200px;
+            box-shadow: 0 0 4px #222222;
+            background-color: #e1e1e1;
+            display: none
+        }
+        #gameover p {
+            width: 100%; height: 40px;
+            text-align: center;
+            font-size: 36px;
+            color: #336688;
+            margin-top: 50px;
+        }
+        #gameover span {
+            width: 60%; height: 40px;
+            display: block;
+            margin: 38px auto 0;
+            text-align: center;
+            font-size: 20px;
+            background: #336688;
+            color: #ffffff;
+            border-radius: 10px;
+            line-height: 40px;
+        }
+
+    </style>
+</head>
+<body>
+
+<div id="wrap"></div>
+<div id="ball"></div>
+<div id="ward"></div>
+<div id="score">0分</div>
+<div id="gameover">
+    <p>总分:74</p>
+    <span>确定</span>
+</div>
+
+<script>
+    "use strict";
+    // 构造方法
+    function Breakout(ball,wrap,ward,score,over){
+        this.ball = ball;
+        this.wrap = wrap;
+        this.ward = ward;
+        this.scores = score;
+        this.over = over;
+        this.x = 0;  // 小球的x坐标
+        this.y = 0;  // 小球的y坐标
+        this.score = 0;
+        this.maxX = window.innerWidth - this.ball.offsetWidth - 10;
+        this.maxY = window.innerHeight - this.ball.offsetHeight - 50;
+        this.minX = 0;
+        this.minY = 0;
+    }
+    Breakout.prototype = {
+        // 初始化基本界面
+        init: function(){
+            this.createBrick();
+            this.ballStart();
+            this.wardMove();
+        },
+
+        // 创建砖块
+        createBrick: function(){
+            let x = document.documentElement.offsetWidth / 2 - document.documentElement.offsetWidth * .05; //设置居中位置
+            let w = 45*2;
+            let h = 30;
+            for (let i=0; i<5; i++){
+                for (let j=0; j<2*i+1; j++){
+                    let brick = document.createElement("div");
+                    brick.style.top = i*h+"px";
+                    brick.style.left= x-i*w+j*w+"px";
+                    this.wrap.appendChild(brick);
+                }
+            }
+        },
+
+        // 挡板移动初始化
+        wardMove: function () {
+            this.ward.style.top = window.innerHeight - 180 + 'px';  //初始化挡板的top位置
+            this.ward.style.left = this.x - 60 + 'px';              //初始化挡板的left位置居中
+            this.addEvent(document, 'mousemove', this.mouseMove.bind(this)); //监听鼠标移动
+        },
+
+
+        // 小球初始化
+        ballStart: function () {
+            this.y = window.innerHeight - 200;
+            this.x = window.innerWidth / 2;
+            this.ball.style.top = this.y+"px";
+            this.ball.style.left = this.x+"px";
+            this.ball.speed = 10;
+            this.ball.speedX = this.ball.speed;
+            this.ball.speedY = this.ball.speed;
+            this.ball.width = 15;
+            this.ball.height = 15;
+
+
+        },
+
+        mouseMove: function (e) {                               //鼠标移动,挡板跟随鼠标运动
+            e = e || window.event;                              //事件对象兼容性处理
+            var _left = e.pageX - this.ward.offsetWidth / 2;    //保证鼠标移动,挡板中间位置同步鼠标位置
+            _left = Math.min(window.innerWidth - this.ward.offsetWidth, _left); //挡板向右移动不能超过屏幕右边界
+            _left = Math.max(0, _left);                                         //挡板向左移动不能超过屏幕左边界
+            this.ward.style.left = _left + 'px';                                //通过设置挡板left值实现挡板移动
+        },
+
+        // 反弹规则
+        bound: function(){
+            if (this.x>=this.maxX) {
+                this.x = this.maxX;
+                this.ball.speedX *= -1;
+            }
+            if (this.y>=this.maxY){
+                this.y = this.maxY;
+                this.ball.speedY *= -1;
+            }
+            if (this.x<=this.minX) {
+                this.x = this.minX;
+                this.ball.speedX *= -1;
+            }
+            if (this.y<=this.minY) {
+                this.y = this.minY;
+                this.ball.speedY *= -1;
+            }
+
+            this.x += this.ball.speedX;
+            this.y += this.ball.speedY;
+
+            //挡板碰撞检测
+            if (Math.abs(this.x - (this.ward.offsetLeft + (this.ward.clientWidth / 2))) < 60 && Math.abs(this.y - this.ward.offsetTop - 30) < 45) {
+                this.ball.speedY *= -1;
+                this.y = this.ward.offsetTop - 40;
+            }
+
+            // 砖块碰撞处理
+            for (var i = this.wrap.children.length - 1; i >= 0; i--) {
+                var ballMx = this.ball.offsetLeft + (this.ball.width / 2);
+                var ballMy = this.ball.offsetTop + (this.ball.height / 2);
+                var brickMx = (this.wrap.children[i].offsetLeft + this.wrap.offsetLeft) + (45 / 2);
+                var brickMy = (this.wrap.children[i].offsetTop + this.wrap.offsetTop) + (15 / 2);
+                if (Math.abs(ballMx - brickMx) <= 45 && Math.abs(ballMy - brickMy) <= 15) {
+                    this.ball.speedY *= -1;
+                    this.y = brickMy;
+                    this.wrap.removeChild(this.wrap.children[i]);
+                    if (this.wrap.children.length == 0) {
+                        this.gameOver();
+                    }
+                    this.scoreChange();
+                }
+            }
+
+        },
+
+        // 分数调整
+        scoreChange: function(){
+            this.score++;
+            this.scores.innerText = this.score+"分";
+
+        },
+
+        gameOver: function(){
+            this.over.style.display = 'block';
+            this.over.children[0].innerHTML = '总分:' + this.score;
+            var all = document.querySelectorAll('*');
+            for (var i = 0; i < all.length; i++) {
+                all[i].style.cursor = 'auto'
+            }
+            this.ward.style.display = 'none';
+            this.ball.style.display = 'none';
+            this.over.children[1].onclick = function () {
+                window.location.reload();
+            }
+        },
+
+        // 添加事件监听
+        addEvent: function (element, e, fn) {
+            return element.attachEvent ? element.attachEvent('on' + e, fn) : element.addEventListener(e, fn, false);
+        },
+
+        // 开始游戏
+        start: function () {
+
+            function move(){
+                this.ball.style.left  = this.x+"px";
+                this.ball.style.top = this.y+"px";
+                this.bound();
+                requestAnimationFrame(move.bind(this));
+            }
+            move.call(this);
+        }
+    };
+
+    let ball = document.getElementById("ball");
+    let wrap = document.getElementById("wrap");
+    let ward = document.getElementById("ward");
+    let score = document.getElementById("score");
+    let over = document.getElementById("gameover");
+
+    let breakout = new Breakout(ball, wrap, ward, score, over);
+    breakout.init();
+    breakout.start();
+
+</script>
+
+</body>
+</html>

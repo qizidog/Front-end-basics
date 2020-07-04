@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>基本语法</title>
+
+    <script>
+        // 1、定义变量
+        var num = 1;
+        var str = "我是一个字符串";
+        var score = 86.0;
+
+        // 2、条件控制
+        if(score>=90){
+            alert("A+");
+        }else if (score>=80){
+            if(score>=85){
+                alert("A");
+            }else{
+                alert("A-");
+            }
+        }else if (score>=70){
+            alert("B");
+        }else if (score>=60 && score<70){
+            alert("C")
+        }else{
+            alert("不及格")
+        }
+
+        // Person p = new Person("qiqi", 3, ["js", "java", "web"]);
+        var person={
+                name:"qiqi",
+                age:3,
+                tags:["js", "java", "web"]
+        }
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

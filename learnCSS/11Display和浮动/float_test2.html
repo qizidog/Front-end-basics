@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>float_test</title>
+<!--解决float导致的边框塌陷方法3-->
+<!--overflow：在父标签中使用该属性可避免float导致边框塌陷
+    hidden: 当父标签设置了固定的尺寸时，超出边界部分的内容不显示；如果父标签没有限制尺寸，则自动显示 完整全部内容
+    scroll: 当父标签设置了固定的尺寸时，超出边界部分的内容可通过滚动条来显示
+-->
+    <style>
+        img,div,p{
+            padding: 0;
+            margin: 0;
+        }
+
+        #dd{
+            border: 1px solid red;
+            /*overflow: hidden;*/
+            /*overflow: scroll;*/
+        }
+
+        /*解决float导致的边框塌陷方法4（推荐使用，不破坏html结构，仅修改css）
+            在父标签后面添加一个伪类after
+            并设置如下三个属性
+        */
+        #dd:after{
+            content: "";
+            display: block;
+            clear: both;
+        }
+
+        #c1{
+            display: inline-block;
+            float: left;
+            /*clear: both;*/
+            /*clear: right;*/
+        }
+
+        #c2{
+            display: inline-block;
+            float: left;
+            /*clear: both;*/
+            /*clear: right;*/
+        }
+
+        #c3{
+            display: inline-block;
+            float: right;
+            clear: right;
+        }
+
+        #pp{
+            display: inline-block;
+            float: right;
+            /*clear: left;*/
+            /*clear: right;*/
+        }
+
+    </style>
+</head>
+<body>
+<div id="dd">
+    <img src="../pic.png" alt="" width="50px" height="50px" id="c1">
+    <img src="../pic1.png" alt="" id="c2">
+    <p id="pp">我的老家就住在这个屯儿</p>
+    <img src="../pic2.png" alt="" id="c3">
+</div>
+
+</body>
+</html>

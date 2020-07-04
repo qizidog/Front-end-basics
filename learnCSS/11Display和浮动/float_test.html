@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>float_test</title>
+
+<!--clear：可以使float的元素换行
+        left：在该元素float为左侧时，如果其左侧还有float元素，则换行（对右浮元素不起作用）
+        right：在该元素float为右侧时，如果其右侧还有float元素，则换行（对左浮元素不起作用）
+        both：双侧都起作用
+        none：不换行
+-->
+    <style>
+        img,div,p{
+            padding: 0;
+            margin: 0;
+        }
+
+        #dd{
+            border: 1px solid red;
+        }
+
+        #c1{
+            display: inline-block;
+            float: left;
+            /*clear: both;*/
+            /*clear: right;*/
+        }
+
+        #c2{
+            display: inline-block;
+            float: left;
+            /*clear: both;*/
+            /*clear: right;*/
+        }
+
+        #c3{
+            display: inline-block;
+            float: right;
+            clear: right;
+        }
+
+        #pp{
+            display: inline-block;
+            float: right;
+            /*clear: left;*/
+            /*clear: right;*/
+        }
+
+        #dd2{
+            clear: both;
+        }
+    </style>
+</head>
+<body>
+<div id="dd">
+    <img src="../pic.png" alt="" width="50px" height="50px" id="c1">
+    <img src="../pic1.png" alt="" id="c2">
+    <p id="pp">我的老家就住在这个屯儿</p>
+    <img src="../pic2.png" alt="" id="c3">
+    <div id="dd2"></div>  <!--一个空的标签，设置成clear:both，可以避免边框塌陷-->
+</div>
+
+</body>
+</html>

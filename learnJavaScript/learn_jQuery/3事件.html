@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件</title>
+    <script src="lib/jquery-3.5.1.js"></script>
+    <style>
+        #frame{
+            height: 300px;
+            width: 500px;
+            border: 1px solid red;
+        }
+
+    </style>
+</head>
+<body>
+    <p><span id="ordinate">x: , y:</span></p>
+    <div id="frame">鼠标放进来试试</div>
+
+
+<script>
+    // 浏览器初始化时即可自动调用
+    $(document).ready(function () {
+        alert('1');
+    });
+    // 上述代码可简写为
+    $(function () {
+        alert('2');
+    });
+
+    // 显示鼠标坐标的效果
+    $("#frame").mousemove(function (e) {
+        $("#ordinate").text("x:"+e.pageX+", y:"+e.pageY);
+    });
+
+</script>
+</body>
+</html>

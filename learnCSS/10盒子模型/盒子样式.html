@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>盒子样式</title>
+<!--盒子样式
+    圆角  border-radius
+    盒子阴影  box-shadow-->
+    <style>
+        #circle{
+            width:100px;
+            height:100px;
+            border: 10px solid #FF0000;
+            /*border-radius: 100px 100px 100px 100px;*/
+            /*border-radius: 60px 60px 60px 60px;*/
+            /*border-radius: 50px 50px 50px 50px;*/
+            border-radius: 100px 100px 0 0;
+        }
+
+        #frame{
+            width:100px;
+            height:50px;
+            border: 10px solid #FF0000;
+            border-radius: 60px 60px 0px 0px;  /*边框*/
+            box-shadow: 10px 3px 3px #a5acac;  /*盒子阴影*/
+        }
+
+        img{
+            border-radius: 40px;  /*把头像变成圆的*/
+        }
+    </style>
+</head>
+<body>
+    <div id="circle">
+
+    </div><br/>
+    <div id="frame">
+
+    </div><br/>
+
+    <img src="../pic.png" alt="wo" width="80px" height="80px">
+</body>
+</html>

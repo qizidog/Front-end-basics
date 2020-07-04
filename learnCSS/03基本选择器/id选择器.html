@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>id选择器</title>
+<!--  三种选择器的优先级：id>class>标签  -->
+    <style>
+        /*id选择器：#idnum{}
+        id必须保证全局唯一*/
+        #qiqiqi{
+            color: red;
+        }
+
+        #qiqizi{
+            color: green;
+        }
+
+        .class1{
+            color: blue;
+        }
+
+        .class2{
+            color: coral;
+        }
+
+        .class3{
+            color: aqua;
+        }
+
+        h1{
+            color: yellow;
+        }
+
+        p{
+            color: darkcyan;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="qiqiqi" class="class1">我是标题1</h1>
+    <h1 id="qiqizi" class="class2">我是标题2</h1>
+    <h1 class="class3">我是标题3</h1>
+    <h1 class="class1">我是标题4</h1>
+    <p class="class2">我是P标签</p>
+    <p>我也是P标签</p>
+</body>
+</html>

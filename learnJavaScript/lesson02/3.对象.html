@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>对象</title>
+
+    <script>
+
+        let person = {
+            name:"qiqi",
+            age:18,
+            sex:"男",
+            email:"11111@qq.com",
+            hobby:"conding",
+            hobby2:"sleep"
+        }
+
+        // 直接赋值添加属性
+        person.height = 190;
+        // 通过delete动态删除对象的属性
+        delete person.hobby2;
+
+        "name" in person;  // true
+        "lueluelue" in person;  // false
+        "toString" in person;  // true  继承自原型
+
+        // 两种获取field值的方法
+        person.name;
+        person["name"];
+
+        // 判断一个属性是否为这个对象自身拥有的
+        person.hasOwnProperty("toString");  // false
+        person.hasOwnProperty("name");  // ture
+
+    </script>
+
+</head>
+<body>
+
+</body>
+</html>

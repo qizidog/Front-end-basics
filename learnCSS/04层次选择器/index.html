@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>层次选择器</title>
+    <style>
+        /*后代选择器：只要是后代都继承*/
+        body p{  /*从body开始，之后的都会继承*/
+            color: green;
+        }
+
+        /*子选择器：只有子一代继承*/
+        body>p{
+            color: coral;
+        }
+
+        /*相邻兄弟选择器（1号弟弟选择器）*/
+        .active+p{  /*标的1/7，亮的2/8*/
+            background: #58b8ec;
+        }
+
+        /*通用兄弟选择器（所有弟弟选择器）*/
+        .active~p{  /*1下面的都变了*/
+            color: blueviolet;
+        }
+
+        /*练习：选中ul下所有的li*/
+        ul li{
+            background: yellow;
+        }
+    </style>
+    
+</head>
+<body>
+    <p>p0</p>
+    <p class="active">p1</p>
+    <p>p2</p>
+    <p>p3</p>
+    <ul>
+        <li>
+            <p>p4</p>
+        </li>
+        <li>
+            <p>p5</p>
+        </li>
+        <li>
+            <p>p6</p>
+        </li>
+    </ul>
+    <p class="active">p7</p>
+    <p>p8</p>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>属性选择器</title>
+    <!--属性选择器：
+        属性名[属性 符号 属性值(可以用正则)]{}
+        = 绝对等于
+        *= 包含
+    -->
+    <style>
+        .demo a{
+            float:left;
+            display: block;
+            height: 50px;
+            width: 50px;
+            border-radius: 10px;
+            background: #58b8ec;
+            text-align: center;
+            color: green;
+            text-decoration: none;
+            margin-right: 5px;
+            font: bold 20px/50px Arial;
+        }
+
+        a[name]{  /*含有name标签的*/
+            background: red;
+        }
+
+        a[id=last]{  /*标签id等于last的*/
+            background: #7ebd51;
+        }
+
+        a[class~=item]{  /*标签class中含有item独立单词的*/
+            background: blueviolet;
+        }
+
+        a[class|=link]{  /*标签中以-为分隔符，link独立单词开头的*/
+            font-size: 30px;
+        }
+
+        a[href^=abc]{  /*href标签以abc开头的*/
+            color: orange;
+        }
+
+        a[href$=f]{  /*href标签以f结尾的*/
+            color: #868c8d;
+        }
+
+        a[href*="23"]{  /*href标签中含有23这两个字符的*/
+            color:pink;
+        }
+    </style>
+</head>
+<body>
+<p class="demo">
+    <a href="https://www.baidu.com" class="link item first" id="first" name="111">1</a>
+    <a href="" class="link item active" target="_blank" title="test">2</a>
+    <a href="abc.html" class="link item">3</a>
+    <a href="123.png" class="link item">4</a>
+    <a href="123.jpg" class="item -a" name="555">5</a>
+    <a href="abc" class="a-item-link">6</a>
+    <a href="a.pdf" class="link-item">7</a>
+    <a href="/abc.pdf" class="link item">8</a>
+    <a href="abc.doc" class="item">9</a>
+    <a href="abcd.doc" class="link item last" id="last">10</a>
+</p>
+</body>
+</html>

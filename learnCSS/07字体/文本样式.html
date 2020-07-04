@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>文本样式</title>
+
+    <!--文本样式：只对块标签（会自成一段的标签）有用
+        1、颜色 16进制 rgb rgba
+        2、对齐方式  text-align
+        3、首行缩进  text-indent
+        4、行高 行间距  height  line-height
+        5、装饰 text-decoration
+    -->
+    <style>
+        span{
+            color: #FF0000;
+        }
+
+        .que{
+            text-align: center;
+            text-indent: 2em;  /*首行缩进两个字符*/
+            color: rgba(147, 0, 200, 0.8);
+            text-decoration: none;  /*超链接去下划线*/
+        }
+        /*p:nth-of-type(1){*/
+        /*    text-align: center;*/
+        /*}*/
+        body p:first-of-type{
+            text-align: center;
+        }
+
+        .poem{  /*行高和行间距一样时，文字就垂直居中了*/
+            background: #7ebd51;
+            height: 40px;  /*行高*/
+            line-height: 40px;  /*行间距*/
+        }
+
+        .line1{
+            /*text-decoration: underline;  !*下划线*!*/
+            text-decoration: overline;  /*上划线*/
+        }
+
+        .line2{
+            text-decoration: line-through;  /*删除线*/
+        }
+
+        .line3{
+            text-shadow: #868c8d 5px 5px 2px;  /*阴影效果*/
+        }
+        img,span{  /*图片和文字垂直对齐*/
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+    <span class="import">span</span>标注的一般都是重要内容<br/>
+    <p class="line1">秦疆老师的CSS教程，快速上手CSS必备</p>
+    <p class="line2">从基础到进阶，每一个小知识都带有小案例，学习不枯燥</p>
+    <p class="line3">狂神说Java系列，努力打造通俗易懂的教程</p>
+    <p>QQ交流群:1084985717</p>
+    <p class="poem">
+        He was my North, my South, my East and West, My working week and my Sunday rest, My noon, my midnight, my talk, my song; I thought that love would last forever: I was wrong.
+    </p><br/>
+    <p class="que">
+        <a href="none" class="que">我是一个超链接</a>
+    </p>
+    <b class="que">我不是一个超链接</b><br/>
+    <h3 class="que">我是块标签</h3>
+    <p class="vertical"><img src="../aa.png" alt=""><span>尝试文字和图片垂直居中</span></p>
+</body>
+</html>
